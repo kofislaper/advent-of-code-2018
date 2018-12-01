@@ -1,8 +1,7 @@
 package com.kofislaper.day1
 
-import java.nio.file.{Files, Paths}
-
 import scala.annotation.tailrec
+import scala.io.Source
 
 object Calibration {
 
@@ -23,8 +22,7 @@ object Calibration {
   }
 
   def main(args: Array[String]): Unit = {
-    import collection.JavaConverters._
-    val lines = Files.readAllLines(Paths.get(Calibration.getClass.getResource("/day1.txt").toURI)).asScala
+    val lines = Source.fromResource("day1.txt").getLines().toList
     val changes = lines.map(_.toInt)
     println(changes)
     val result = calculateFrequency(0, changes)
